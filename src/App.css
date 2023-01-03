@@ -1,0 +1,783 @@
+/*  resets*/
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+/* for consitency between firefox & chrome */
+textarea {
+  vertical-align: top;
+}
+
+li {
+  list-style-type: none;
+}
+
+/* main css */
+
+:root {
+  --results-bg: rgb(192, 224, 231);
+}
+
+body {
+  background-color: whitesmoke;
+}
+
+.app-outer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 13vh;
+}
+
+@media only screen and (max-height: 900px) {
+  .app-outer-container {
+    margin-top: 7vh;
+  }
+  .main-link {
+    /* does not work properly in firefox? */
+    padding-top: auto;
+  }
+}
+
+@media only screen and (max-height: 850px) {
+  .app-outer-container {
+    margin-top: auto;
+  }
+  .main-link {
+    /* does not work properly in firefox? */
+    padding-top: auto;
+  }
+}
+
+.outer-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  /* height: 90vh; */
+}
+
+.container {
+  margin: auto 20px;
+}
+
+/* ==== Hints */
+.hints {
+  width: 420px;
+  height: 472px;
+  margin-left: auto;
+  margin-right: auto;
+  color: black;
+  background-color: rgba(228, 240, 237, 1);
+  border: 2px solid green;
+  border-radius: 2px;
+  position: absolute;
+  top: 50px;
+  left: -10px;
+  z-index: 1;
+}
+
+.inner-hints {
+  padding-left: 10px;
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+}
+
+.hints-title {
+  text-align: center;
+  font-size: 1.1em;
+  /* padding-bottom: 0.1em; */
+  padding-bottom: 0.2em;
+}
+
+.hints-quicktips {
+  border-bottom: 2px gray solid;
+  padding-bottom: 0.6em;
+  margin-bottom: 1em;
+}
+/* =======   Profile*/
+
+.profile {
+  width: 173px;
+  min-height: 106px;
+  color: black;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 2px;
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  z-index: 1;
+}
+
+.inner-profile {
+  padding-top: 0.25em;
+}
+
+.profile-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1em;
+  padding-top: 0.1em;
+}
+
+.list-profile {
+  padding-top: 0.5em;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.list-profile > li {
+  border-bottom: 1px solid black;
+  cursor: pointer;
+}
+
+.list-profile > li:hover {
+  background-color: black;
+}
+
+.list-profile > :last-child {
+  border-bottom: none;
+}
+
+.list-profile > :first-child {
+  border-top: 1px solid black;
+}
+
+.profile-score {
+  color: green;
+}
+
+.profile-score:hover {
+  color: rgb(93, 195, 139);
+}
+
+.profile-password {
+  color: steelblue;
+}
+
+.profile-password:hover {
+  color: rgb(154, 199, 214);
+}
+
+.profile-delete {
+  color: tomato;
+}
+
+/* DeleteAccount */
+.delaccount-p {
+  margin-top: 0.1rem;
+}
+
+/* ======= main */
+.main-square {
+  width: 400px;
+  height: 578px;
+  background-color: #afd9d0;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgba(92, 177, 158, 0.831);
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px black;
+  position: relative;
+}
+
+.title {
+  /* font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
+  /* font-weight: bold; */
+  font-family: Merriweather;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 45px;
+  font-weight: normal;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.loading-div {
+  margin-top: 40vh;
+}
+
+.loading-text {
+  margin-bottom: auto;
+}
+.loading-text-top {
+  width: 62px;
+}
+
+.btn {
+  /* display: block; */
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: normal;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  /* transition: all 0.1s linear; */
+}
+
+/* Upper UI: counter, speed&accuracy display, hints button */
+.upper-ui {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  align-items: center;
+  height: 2.5em;
+}
+
+.upper-ui-right {
+  display: flex;
+  flex-direction: row;
+}
+
+.upper-ui-inner {
+  display: flex;
+  flex-direction: column;
+  margin-right: 20px;
+  text-align: center;
+}
+
+.upper-ui-item-label {
+  font-size: 0.65rem;
+  margin-bottom: 0.1rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+.upper-ui-item {
+  color: whitesmoke;
+  background: black;
+  width: 50px;
+  /* !!!!! */
+  text-align: center;
+}
+
+.counter {
+  font-family: "droid-serif, sant-serif";
+  padding: 1px 1px;
+}
+
+.display-speed,
+.display-accuracy {
+  width: 60px;
+  background-color: rgb(12, 66, 68);
+  border-radius: 2px;
+  border: 1px solid black;
+}
+
+.btn-display-hints {
+  font-size: 1.05em;
+  border-radius: 20%;
+  color: white;
+  padding: 0.05em 0.3em;
+  font-weight: bolder;
+  border: 1px solid black;
+  align-self: flex-end;
+}
+
+/* wiki display & textarea for typing */
+
+.wiki-display {
+  background-color: white;
+  height: 153px;
+  padding: 2px 4px;
+  margin-top: 0px;
+  margin-bottom: 10px;
+  border: 1px solid black;
+}
+
+.wiki-display-outer {
+  position: relative;
+}
+
+.wiki-display-page-counter {
+  font-size: 0.95em;
+  color: dimgray;
+  position: absolute;
+  border: 1px solid dimgray;
+  border-bottom: black;
+  border-right: black;
+  padding: 0.025em 0.05em;
+  min-width: 25px;
+  text-align: center;
+  top: 132px;
+  right: 0px;
+}
+
+.typing-display {
+  outline: none;
+  resize: none;
+  padding: 2px 4px;
+  width: 358px;
+  height: 153px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 1rem;
+  font-weight: 100;
+  color: dimgray;
+}
+
+/* control buttons */
+.control-buttons-row {
+  display: flex;
+  justify-content: space-between;
+  max-width: 400px;
+}
+
+.column-left,
+.column-right {
+  display: inline-block;
+}
+
+.control-item {
+  margin-right: 2px;
+  width: 60px;
+  height: 1.5rem;
+  font-family: Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.timer-select {
+  vertical-align: middle;
+}
+
+.btn-control {
+  display: inline-block;
+  background-color: steelblue;
+  border-radius: 0.5em;
+  color: white;
+  border: 1px solid black;
+}
+
+.btn-control:hover {
+  background-color: slateblue;
+}
+
+.btn-control-disabled {
+  background-color: darkgrey;
+  display: inline-block;
+  border-radius: 0.5em;
+  color: white;
+  border: 1px solid black;
+  cursor: default;
+}
+
+.btn-reset {
+  margin-right: 0;
+  background-color: tomato;
+}
+
+.btn-reset:hover {
+  background-color: rgb(228, 27, 1);
+}
+
+.btn-wiki {
+  /* display: inline-block; */
+  height: 1.95em;
+  display: block;
+  margin-left: auto;
+}
+
+/* bnt-results in lower UI below results-row-container*/
+.btn-results {
+  display: inline-block;
+  height: 1.95em;
+}
+
+/* wikipedia controller */
+.wiki-controler {
+  margin-top: 20px;
+}
+
+.wiki-title-label {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-size: 0.75rem;
+}
+
+.wiki-title-display {
+  background-color: white;
+  height: 1.5rem;
+  padding: 2px 4px;
+  margin-top: 0px;
+  margin-bottom: 5px;
+  border: 1px solid black;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.wiki-title-display-link {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+.wiki-title-display-link:hover {
+  overflow: visible;
+  color: rgb(37, 111, 172);
+}
+
+.wiki-title-display {
+  background-color: aliceblue;
+}
+
+/* results */
+.results {
+  /* visibility: hidden; */
+  width: 400px;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2px 2px;
+  color: black;
+  background-color: var(--results-bg);
+  opacity: 1;
+  border: 1px solid steelblue;
+  border-radius: 4px;
+  box-shadow: 1px 1px 1px black;
+  position: relative;
+  z-index: 10;
+}
+
+.inner-results {
+  padding-bottom: 5px;
+}
+
+.results-title {
+  text-align: center;
+  font-size: 1em;
+}
+
+.results-main {
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.1rem;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  border-bottom: 1px solid black;
+}
+
+.results-main > p {
+  margin-bottom: 0.1em;
+}
+
+.results-other {
+  font-size: 0.85em;
+}
+
+/* lowerUI (resultButton & stats */
+
+.results-buttons-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  margin-bottom: 5px;
+}
+
+.btn-results {
+  display: inline-block;
+  height: 1.95em;
+  /* align-self: center; */
+}
+
+.fa-chart-bar {
+  color: green;
+  cursor: pointer;
+  /* align-self: center; */
+}
+
+.tooltip {
+  position: relative;
+  cursor: default;
+}
+
+.tooltip-text {
+  position: absolute;
+  visibility: hidden;
+  background-color: bisque;
+  z-index: 1;
+  padding: 0.3em 0.4em;
+  border-radius: 5px;
+  border: 1px solid black;
+  left: 0px;
+  bottom: 1.45rem;
+  font-size: 1rem;
+  font-weight: normal;
+  /* min-width: 200px; */
+  white-space: nowrap;
+}
+
+.tooltip-text-other {
+  bottom: 1.2rem;
+}
+
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+}
+
+.results-other > .tooltip {
+  margin-bottom: 0.1em;
+}
+
+.results-other > :last-child {
+  margin-bottom: 0em;
+}
+
+/* Stats */
+
+.stats {
+  width: 420px;
+  /* min-height: 320px; */
+  /* min-height: 310px; */
+  height: 310px;
+
+  color: black;
+  background-color: var(--results-bg);
+  opacity: 1;
+  border: 2px solid steelblue;
+  border-radius: 2px;
+  /* .main-square set to relative */
+  position: absolute;
+  left: -10px;
+  bottom: 45px;
+  z-index: 1;
+}
+
+.inner-stats {
+  padding-left: 10px;
+  padding-top: 0.5em;
+  /* padding-bottom: 0.5em; */
+  /* position: absolute; */
+}
+
+.stats-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1em;
+  padding-bottom: 0.1em;
+}
+
+.score-list > li {
+  list-style-type: decimal;
+  margin-top: 0.1rem;
+}
+
+.score-main {
+  display: flex;
+  justify-content: space-around;
+  /* align-items: center; */
+  /* font-weight: bold; */
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid black;
+  padding-bottom: 0.1rem;
+}
+
+.score-title {
+  font-size: 1.3rem;
+  padding-bottom: 2px;
+}
+
+.score-select-div {
+  display: flex;
+  align-items: center;
+}
+
+.delete-score-div {
+  display: flex;
+  /* position: relative; */
+  /* left: 50px; */
+  /* float: right; */
+  justify-content: center;
+  margin-top: 1.6rem;
+}
+
+.delete-score-confirmation-div {
+  margin-top: 1.7rem;
+}
+
+.delete-score-text {
+  align-self: center;
+  padding-bottom: 2px;
+}
+
+.btn-delete-stats {
+  /* width: auto; */
+  /* align-self: center; */
+  width: 24px;
+}
+
+.delete-score-confirm {
+  color: red;
+  cursor: pointer;
+  padding-top: 1px;
+}
+
+.delete-score-cancel {
+  color: slateblue;
+  cursor: pointer;
+  padding-top: 1px;
+}
+
+.delete-score-confirm:hover {
+  background-color: rgba(243, 157, 170, 0.294);
+}
+.delete-score-cancel:hover {
+  background-color: rgb(136, 209, 233);
+}
+
+.tooltip-text-stats {
+  left: -3px;
+  bottom: 1.2rem;
+}
+
+.tooltip:hover .tooltip-text-stats {
+  visibility: visible;
+}
+
+/* lower UI fa icon */
+.fa-chart-bar-green {
+  color: green;
+}
+
+.fa-chart-bar-black {
+  color: black;
+}
+
+/* AuthenticationUI */
+
+.auth-div {
+  /* background-color: black; */
+  display: flex;
+  justify-content: space-evenly;
+  /* align-items: center; */
+  color: whitesmoke;
+  position: absolute;
+  top: -21px;
+  right: 0px;
+  border-bottom: 20px solid black;
+  border-left: 20px solid transparent;
+  border-right: 15px solid transparent;
+  border-radius: 2px;
+
+  height: 0;
+  width: 170px;
+}
+
+.main-link {
+  margin: auto 0.3rem;
+  text-decoration: none;
+  color: white;
+  padding-top: 1px;
+}
+
+.main-link:hover {
+  color: turquoise;
+  cursor: pointer;
+  transition: all 0.1s linear;
+}
+
+/* Login */
+
+.main-square-auth {
+  width: 400px;
+  /* min-height: 578px; */
+  min-height: 260px;
+  background-color: white;
+  margin-bottom: 10%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 0.1rem;
+  /* border: 1px solid rgba(92, 177, 158, 0.831); */
+  /* border: 1px solid rgba(92, 177, 158, 0.831); */
+  border: 1px solid lightsteelblue;
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px black;
+  position: relative;
+  z-index: 0;
+}
+
+.form-div {
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+}
+
+.title-auth-div {
+  text-align: center;
+}
+
+.form {
+  margin-top: 1rem;
+}
+
+.btn-auth {
+  display: block;
+  width: 100%;
+  height: 2rem;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  transition: all 0.1s linear;
+}
+
+.input {
+  margin: 0.3rem auto;
+  width: 100%;
+  height: 2rem;
+}
+
+.title-auth {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.auth-links-div {
+  text-align: center;
+  margin-top: 1.25rem;
+}
+
+.auth-link-item {
+  margin-bottom: 0.5rem;
+}
+
+.auth-link {
+  color: indigo;
+}
+
+.auth-link:hover {
+  color: chocolate;
+  text-decoration: none;
+}
+
+/* auth notification */
+
+.auth-notification-div {
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  width: 400px;
+  color: white;
+  text-align: center;
+  border-radius: 4px;
+}
+
+.auth-notification-info {
+  border: 1px solid dodgerblue;
+  background-color: rgb(123, 184, 245);
+}
+
+.auth-notification-danger {
+  border: 1px solid firebrick;
+  background-color: tomato;
+}
