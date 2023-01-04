@@ -21,7 +21,7 @@ Create an account to access your top score.  App structure described in appTree.
 
 \* \- articles shorter than 370 characters or containing non-english characters are skipped. All text in brackets is edited out.
 
-Technologies used: React, Redux, GraphQL (Apollo), MongoDB, Express, JSON Web Token
+Technologies used: React, Redux, GraphQL (Apollo), JSON Web Token
 
 ## Live app
 
